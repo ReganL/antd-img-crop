@@ -5,6 +5,7 @@ import LocaleReceiver from 'antd/es/locale-provider/LocaleReceiver';
 import Modal from 'antd/es/modal';
 import Slider from 'antd/es/slider';
 import './index.less';
+import { transform } from 'typescript';
 
 const pkg = 'antd-img-crop';
 const noop = () => {};
@@ -157,14 +158,15 @@ const ImgCrop = forwardRef((props, ref) => {
       props: {
         ...restUploadProps,
         accept: accept || 'image/*',
-        beforeUpload: async (file, fileList) =>
+        beforeUpload: async (newFile, fileList) => {
+          const file = transform ? await transform(newFile) : newFile;
           new Promise((resolve, reject) => {
             if (beforeCrop && !beforeCrop(file, fileList)) {
               reject();
               return;
             }
 
-            fileRef.current = transform ? await transform(file) : file;
+            fileRef.current = file;
             resolveRef.current = resolve;
             rejectRef.current = reject;
 
@@ -173,7 +175,8 @@ const ImgCrop = forwardRef((props, ref) => {
               setSrc(reader.result);
             });
             reader.readAsDataURL(file);
-          }),
+          });
+        },
       },
     };
   }, [beforeCrop, children]);
