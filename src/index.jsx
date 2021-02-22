@@ -97,6 +97,7 @@ EasyCrop.propTypes = {
   rotateVal: t.number,
   setZoomVal: t.func,
   setRotateVal: t.func,
+  transform: t.func,
 
   minZoom: t.number,
   maxZoom: t.number,
@@ -156,14 +157,14 @@ const ImgCrop = forwardRef((props, ref) => {
       props: {
         ...restUploadProps,
         accept: accept || 'image/*',
-        beforeUpload: (file, fileList) =>
+        beforeUpload: async (file, fileList) =>
           new Promise((resolve, reject) => {
             if (beforeCrop && !beforeCrop(file, fileList)) {
               reject();
               return;
             }
 
-            fileRef.current = file;
+            fileRef.current = transform ? await transform(file) : file;
             resolveRef.current = resolve;
             rejectRef.current = reject;
 
