@@ -10,10 +10,10 @@ function __$styleInject(css) {
     return css;
 }
 
-import _regeneratorRuntime from '@babel/runtime/regenerator';
 import _asyncToGenerator from '@babel/runtime/helpers/esm/asyncToGenerator';
 import _extends from '@babel/runtime/helpers/esm/extends';
 import _objectWithoutPropertiesLoose from '@babel/runtime/helpers/esm/objectWithoutPropertiesLoose';
+import _regeneratorRuntime from '@babel/runtime/regenerator';
 import React, { forwardRef, useState, useRef, useCallback, useMemo } from 'react';
 import t from 'prop-types';
 import Cropper from 'react-easy-crop';

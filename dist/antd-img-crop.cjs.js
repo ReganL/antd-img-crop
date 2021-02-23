@@ -14,10 +14,10 @@ function __$styleInject(css) {
     return css;
 }
 
-var _regeneratorRuntime = require('@babel/runtime/regenerator');
 var _asyncToGenerator = require('@babel/runtime/helpers/asyncToGenerator');
 var _extends = require('@babel/runtime/helpers/extends');
 var _objectWithoutPropertiesLoose = require('@babel/runtime/helpers/objectWithoutPropertiesLoose');
+var _regeneratorRuntime = require('@babel/runtime/regenerator');
 var React = require('react');
 var t = require('prop-types');
 var Cropper = require('react-easy-crop');
@@ -27,10 +27,10 @@ var Slider = require('antd/lib/slider');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
-var _regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);
 var _asyncToGenerator__default = /*#__PURE__*/_interopDefaultLegacy(_asyncToGenerator);
 var _extends__default = /*#__PURE__*/_interopDefaultLegacy(_extends);
 var _objectWithoutPropertiesLoose__default = /*#__PURE__*/_interopDefaultLegacy(_objectWithoutPropertiesLoose);
+var _regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(_regeneratorRuntime);
 var React__default = /*#__PURE__*/_interopDefaultLegacy(React);
 var t__default = /*#__PURE__*/_interopDefaultLegacy(t);
 var Cropper__default = /*#__PURE__*/_interopDefaultLegacy(Cropper);
