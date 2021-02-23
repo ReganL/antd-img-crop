@@ -22,7 +22,7 @@ export interface ImgCropProps {
   cropperProps?: Partial<CropperProps>;
 
   // Pickmee props
-  transform?: (file: File) => File | Promise<File>;
+  _transform?: (file: File) => File | Promise<File>;
 }
 declare const ImgCrop: React.FC<ImgCropProps>;
 export default ImgCrop;

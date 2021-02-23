@@ -20,7 +20,6 @@ import Cropper from 'react-easy-crop';
 import LocaleReceiver from 'antd/es/locale-provider/LocaleReceiver';
 import Modal from 'antd/es/modal';
 import Slider from 'antd/es/slider';
-import { transform } from 'typescript';
 
 __$styleInject(".antd-img-crop-modal .ant-modal-body {\n  padding-bottom: 16px;\n}\n.antd-img-crop-modal .antd-img-crop-container {\n  position: relative;\n  width: 100%;\n  height: 40vh;\n  margin-bottom: 16px;\n}\n.antd-img-crop-modal .antd-img-crop-control {\n  display: flex;\n  align-items: center;\n  width: 60%;\n  margin-left: auto;\n  margin-right: auto;\n}\n.antd-img-crop-modal .antd-img-crop-control button {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 34px;\n  height: 34px;\n  padding: 0;\n  font-style: normal;\n  background: transparent;\n  border: 0;\n  outline: 0;\n  cursor: pointer;\n}\n.antd-img-crop-modal .antd-img-crop-control button[disabled] {\n  cursor: default;\n}\n.antd-img-crop-modal .antd-img-crop-control.zoom button {\n  font-size: 18px;\n}\n.antd-img-crop-modal .antd-img-crop-control.rotate button {\n  font-size: 16px;\n}\n.antd-img-crop-modal .antd-img-crop-control.rotate button:first-of-type {\n  transform: rotate(-20deg);\n}\n.antd-img-crop-modal .antd-img-crop-control.rotate button:last-of-type {\n  transform: rotate(20deg);\n}\n.antd-img-crop-modal .antd-img-crop-control .ant-slider {\n  flex: 1;\n  margin: 0 8px;\n}\n");
 
@@ -116,7 +115,7 @@ EasyCrop.propTypes = {
   rotateVal: t.number,
   setZoomVal: t.func,
   setRotateVal: t.func,
-  transform: t.func,
+  _transform: t.func,
   minZoom: t.number,
   maxZoom: t.number,
   onComplete: t.func,
@@ -138,7 +137,8 @@ var ImgCrop = /*#__PURE__*/forwardRef(function (props, ref) {
       modalCancel = props.modalCancel,
       beforeCrop = props.beforeCrop,
       children = props.children,
-      cropperProps = props.cropperProps;
+      cropperProps = props.cropperProps,
+      _transform = props._transform;
   var hasZoom = zoom === true;
   var hasRotate = rotate === true;
 
@@ -182,13 +182,13 @@ var ImgCrop = /*#__PURE__*/forwardRef(function (props, ref) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    if (!transform) {
+                    if (!_transform) {
                       _context.next = 6;
                       break;
                     }
 
                     _context.next = 3;
-                    return transform(newFile);
+                    return _transform(newFile);
 
                   case 3:
                     _context.t0 = _context.sent;

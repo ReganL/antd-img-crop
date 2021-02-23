@@ -5,7 +5,6 @@ import LocaleReceiver from 'antd/es/locale-provider/LocaleReceiver';
 import Modal from 'antd/es/modal';
 import Slider from 'antd/es/slider';
 import './index.less';
-import { transform } from 'typescript';
 
 const pkg = 'antd-img-crop';
 const noop = () => {};
@@ -98,7 +97,7 @@ EasyCrop.propTypes = {
   rotateVal: t.number,
   setZoomVal: t.func,
   setRotateVal: t.func,
-  transform: t.func,
+  _transform: t.func,
 
   minZoom: t.number,
   maxZoom: t.number,
@@ -129,6 +128,9 @@ const ImgCrop = forwardRef((props, ref) => {
     children,
 
     cropperProps,
+
+    // custom props
+    _transform,
   } = props;
 
   const hasZoom = zoom === true;
@@ -159,7 +161,7 @@ const ImgCrop = forwardRef((props, ref) => {
         ...restUploadProps,
         accept: accept || 'image/*',
         beforeUpload: async (newFile, fileList) => {
-          const file = transform ? await transform(newFile) : newFile;
+          const file = _transform ? await _transform(newFile) : newFile;
           return new Promise((resolve, reject) => {
             if (beforeCrop && !beforeCrop(file, fileList)) {
               reject();

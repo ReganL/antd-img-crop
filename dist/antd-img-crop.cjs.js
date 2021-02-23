@@ -24,7 +24,6 @@ var Cropper = require('react-easy-crop');
 var LocaleReceiver = require('antd/lib/locale-provider/LocaleReceiver');
 var Modal = require('antd/lib/modal');
 var Slider = require('antd/lib/slider');
-var typescript = require('typescript');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
@@ -133,7 +132,7 @@ EasyCrop.propTypes = {
   rotateVal: t__default['default'].number,
   setZoomVal: t__default['default'].func,
   setRotateVal: t__default['default'].func,
-  transform: t__default['default'].func,
+  _transform: t__default['default'].func,
   minZoom: t__default['default'].number,
   maxZoom: t__default['default'].number,
   onComplete: t__default['default'].func,
@@ -155,7 +154,8 @@ var ImgCrop = /*#__PURE__*/React.forwardRef(function (props, ref) {
       modalCancel = props.modalCancel,
       beforeCrop = props.beforeCrop,
       children = props.children,
-      cropperProps = props.cropperProps;
+      cropperProps = props.cropperProps,
+      _transform = props._transform;
   var hasZoom = zoom === true;
   var hasRotate = rotate === true;
 
@@ -199,13 +199,13 @@ var ImgCrop = /*#__PURE__*/React.forwardRef(function (props, ref) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    if (!typescript.transform) {
+                    if (!_transform) {
                       _context.next = 6;
                       break;
                     }
 
                     _context.next = 3;
-                    return typescript.transform(newFile);
+                    return _transform(newFile);
 
                   case 3:
                     _context.t0 = _context.sent;
